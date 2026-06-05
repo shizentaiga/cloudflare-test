@@ -2,17 +2,18 @@
 
 import { Hono } from 'hono'
 import { renderer } from './renderer'
-import { sandbox } from './_sandbox/routes' // 🛠️ サンドボックスのルートをインポート
+import { sandbox } from './_sandbox/routes'
+import { Top } from './components/Top' // 🛠️ コンポーネントをインポート
 
 const app = new Hono()
 
 app.use(renderer)
 
 app.get('/', (c) => {
-  return c.render(<h1>Hello!</h1>)
+  // 🛠️ 外部化したコンポーネントをJSXとして呼び出す
+  return c.render(<Top />)
 })
 
-// 🛠️ デバッグ・実験専用のルートを `/_sandbox` 以下に丸ごとマウント
 app.route('/_sandbox', sandbox)
 
 export default app
