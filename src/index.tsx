@@ -5,7 +5,12 @@ import { renderer } from './renderer'
 import { sandbox } from './_sandbox/routes'
 import { Top } from './components/Top' // 🛠️ コンポーネントをインポート
 
-const app = new Hono()
+  // 🛠️ 1. ここに環境変数（D1）の型を定義する
+  type Bindings = {
+    cloudflare_test_db: D1Database
+  }
+
+  const app = new Hono<{ Bindings: Bindings }>()
 
 app.use(renderer)
 
