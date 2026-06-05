@@ -2,5 +2,7 @@
 
 import { Context } from 'hono'
 
-// 1行テキスト（最軽量）
-export const test01 = (c: Context) => c.text("ok")
+// サンドボックス用のテキスト
+export const test01 = (c: Context) => {
+    return c.text("ok")
+}
