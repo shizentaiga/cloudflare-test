@@ -4,6 +4,7 @@ import { Hono } from 'hono'
 import { test01 } from './test01'
 import { test02 } from './test02_db'
 import { test03 } from './test03_drizzle'
+import { test04 } from './test04_crud'
 
 // サンドボックス専用のHonoインスタンスを作成
 const sandbox = new Hono()
@@ -11,5 +12,7 @@ const sandbox = new Hono()
 sandbox.get('/test01', test01)
 sandbox.get('/test02', test02)
 sandbox.get('/test03', test03)
+sandbox.get('/test04', test04)
+sandbox.post('/test04', test04) // 🛠️ これを追記する
 
 export { sandbox }
